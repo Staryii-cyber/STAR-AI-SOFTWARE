@@ -307,70 +307,70 @@
     <script>
         const videoData = [
             {
-                video: './video/1050x.mp4',
+                video: './video/1050x.MP4',
                 mainIcon: './images/10.webp',
                 twinkIcon: null,
                 multiplier: '50X',
-                hasTriangle: true
+                hasTriangle: false
             },
             {
-                video: './video/CoinFlip12x.mp4',
+                video: './video/CoinFlip12x.MP4',
                 mainIcon: './images/CoinFlip.webp',
                 twinkIcon: null,
                 multiplier: '12X',
                 hasTriangle: false
             },
             {
-                video: './video/CoinFlip25x .mp4',
+                video: './video/CoinFlip25x.MP4',
                 mainIcon: './images/CoinFlip.webp',
                 twinkIcon: null,
                 multiplier: '25X',
-                hasTriangle: true
+                hasTriangle: false
             },
             {
-                video: './video/CoinFlip35x .mp4',
+                video: './video/CoinFlip35x.MP4',
                 mainIcon: './images/CoinFlip.webp',
                 twinkIcon: null,
                 multiplier: '35X',
                 hasTriangle: false
             },
             {
-                video: './video/CoinFlip100x.mp4',
-                mainIcon: './images/CoinFLip',
+                video: './video/CoinFlip100x.MP4',
+                mainIcon: './images/CoinFlip.webp',
                 twinkIcon: null,
                 multiplier: '100X',
-                hasTriangle: true
+                hasTriangle: false
             },
             {
-                video: './video/CoinFlip140x.mp4',
+                video: './video/CoinFlip140x.MP4',
                 mainIcon: './images/CoinFlip.webp',
                 twinkIcon: null,
                 multiplier: '12X',
                 hasTriangle: false
             },
             {
-                video: './video/crazytimeblue.50x.mp4',
+                video: './video/crazytimeblue.50x.MP4',
                 mainIcon: './images/CrazyBonus.webp',
-                twinkIcon: './images/blue.webp',
+                twinkIcon: './images/blue.png',
                 multiplier: '50X',
-                hasTriangle: true
+                hasTriangle: false
             },
             {
-                video: './video/crazytimeblue80x.mp4',
+                video: './video/crazytimeblue80x.MP4',
                 mainIcon: './images/CrazyBonus.webp',
-                twinkIcon: './images/blue.webp',
+                twinkIcon: './images/blue.png',
                 multiplier: '80X',
                 hasTriangle: false
             },
             {
-                video: './video/crazytimeblue300x.mp4',
+                video: './video/crazytimeblue300x.MP4',
                 mainIcon: './images/CrazyBonus.webp',
-                twinkIcon: './images/blue.webp',
+                twinkIcon: './images/blue.png',
                 multiplier: '300X',
                 hasTriangle: false
             },
             {
-                video: './video/Pachinko25x.mp4',
+                video: './video/Pachinko25x.MP4',
                 mainIcon: './images/Pachinko.webp',
                 twinkIcon: null,
                 multiplier: '25X',
@@ -417,16 +417,24 @@
             mainIcon.style.backgroundImage = `url(${randomVideoData.mainIcon})`;
             resultValue.textContent = randomVideoData.multiplier;
             
-            twinkIcon.style.backgroundImage = randomVideoData.twinkIcon ? `url(${randomVideoData.twinkIcon})` : '';
-            twinkIcon.classList.toggle('visible', randomVideoData.twinkIcon !== null);
+            if (randomVideoData.twinkIcon) {
+                twinkIcon.style.backgroundImage = `url(${randomVideoData.twinkIcon})`;
+                twinkIcon.classList.add('visible');
+            } else {
+                twinkIcon.style.backgroundImage = '';
+                twinkIcon.classList.remove('visible');
+            }
             
-            triangleIcon.classList.toggle('visible', randomVideoData.hasTriangle);
+            if (randomVideoData.hasTriangle) {
+                triangleIcon.classList.add('visible');
+            } else {
+                triangleIcon.classList.remove('visible');
+            }
             
             loadingOverlay.style.display = 'none';
             videoContainer.classList.add('active');
             resultSection.classList.add('visible');
             
-            // Показываем контейнер "BET ON" с анимацией
             const betSection = document.querySelector('.bet-section');
             betSection.classList.add('visible');
             
@@ -443,7 +451,6 @@
             resultSection.classList.remove('visible');
             triangleIcon.classList.remove('visible');
             
-            // Скрываем контейнер "BET ON"
             const betSection = document.querySelector('.bet-section');
             betSection.classList.remove('visible');
             
