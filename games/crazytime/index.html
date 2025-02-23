@@ -99,8 +99,8 @@
         }
 
         .twink-icon {
-            width: 40px;
-            height: 40px;
+            width: 80px;
+            height: 80px;
             background-size: cover;
             background-position: center;
             border-radius: 8px;
@@ -148,14 +148,13 @@
         }
 
         .play-btn {
-            background: var(--primary-gradient);
-            box-shadow: 0 8px 25px rgba(238, 82, 83, 0.3);
+            background: linear-gradient(93.73deg, #1e90ff, #0047ab); /* Синий градиент */
+            box-shadow: 0 8px 25px rgba(30, 144, 255, 0.3);
         }
 
         .back-btn {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(93.73deg, #e75410, #c40e08); /* Оранжево-красный градиент */
+            box-shadow: 0 8px 25px rgba(231, 84, 16, 0.3);
         }
 
         .play-btn:hover, .back-btn:hover {
@@ -164,6 +163,24 @@
 
         .play-btn:active, .back-btn:active {
             transform: translateY(1px);
+        }
+
+        .play-btn:after, .back-btn:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                      transparent 0%, 
+                      rgba(255, 255, 255, 0.2) 50%, 
+                      transparent 100%);
+            transition: all 0.3s;
+        }
+
+        .play-btn:hover:after, .back-btn:hover:after {
+            left: 100%;
         }
 
         .loading-overlay {
@@ -275,7 +292,7 @@
 <body>
     <div class="container">
         <div class="button-container">
-            <button class="back-btn">Back</button>
+            <button class="back-btn" onclick="window.history.back()">Back</button>
             <button class="play-btn">Play</button>
         </div>
         
